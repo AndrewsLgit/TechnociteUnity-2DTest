@@ -37,6 +37,11 @@ public class LaserScript : MonoBehaviour
         Invoke(nameof(Deactivate), _lifeTime);
     }
 
+    private void OnDisable()
+    {
+        CancelInvoke(nameof(Deactivate));
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Asteroid"))
